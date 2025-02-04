@@ -2,9 +2,9 @@ import { MessageItem, Uri, env, l10n, window } from 'vscode';
 
 import {
   EXTENSION_DISPLAY_NAME,
-  MARKETPLACE_URL,
-  REPOSITORY_URL,
-  USER_NAME,
+  EXTENSION_MARKETPLACE_URL,
+  EXTENSION_REPOSITORY_URL,
+  GITHUB_USER_NAME,
 } from '../configs';
 
 /**
@@ -46,7 +46,7 @@ export class FeedbackController {
    * @returns {void} - No return value
    */
   aboutUs(): void {
-    env.openExternal(Uri.parse(`${REPOSITORY_URL}#readme`));
+    env.openExternal(Uri.parse(`${EXTENSION_REPOSITORY_URL}#readme`));
   }
 
   /**
@@ -59,7 +59,7 @@ export class FeedbackController {
    * @returns {void} - No return value
    */
   documentation(): void {
-    env.openExternal(Uri.parse(`${REPOSITORY_URL}/wiki`));
+    env.openExternal(Uri.parse(`${EXTENSION_REPOSITORY_URL}/wiki`));
   }
 
   /**
@@ -72,7 +72,7 @@ export class FeedbackController {
    * @returns {void} - No return value
    */
   reportIssues(): void {
-    env.openExternal(Uri.parse(`${REPOSITORY_URL}/issues`));
+    env.openExternal(Uri.parse(`${EXTENSION_REPOSITORY_URL}/issues`));
   }
 
   /**
@@ -85,7 +85,9 @@ export class FeedbackController {
    * @returns {void} - No return value
    */
   rateUs(): void {
-    env.openExternal(Uri.parse(`${MARKETPLACE_URL}&ssr=false#review-details`));
+    env.openExternal(
+      Uri.parse(`${EXTENSION_MARKETPLACE_URL}&ssr=false#review-details`),
+    );
   }
 
   /**
@@ -128,11 +130,13 @@ export class FeedbackController {
     // Handle the actions
     switch (option?.title) {
       case actions[0].title:
-        env.openExternal(Uri.parse(`https://github.com/sponsors/${USER_NAME}`));
+        env.openExternal(
+          Uri.parse(`https://github.com/sponsors/${GITHUB_USER_NAME}`),
+        );
         break;
 
       case actions[1].title:
-        env.openExternal(Uri.parse(`https://patreon.com/${USER_NAME}`));
+        env.openExternal(Uri.parse(`https://patreon.com/${GITHUB_USER_NAME}`));
         break;
     }
   }

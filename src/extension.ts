@@ -8,7 +8,7 @@ import {
   EXTENSION_ID,
   EXTENSION_NAME,
   ExtensionConfig,
-  USER_PUBLISHER,
+  EXTENSION_USER_PUBLISHER,
 } from './app/configs';
 import {
   ExampleController,
@@ -101,7 +101,7 @@ export async function activate(context: vscode.ExtensionContext) {
         title: vscode.l10n.t('Release Notes'),
       },
       {
-        title: vscode.l10n.t('Close'),
+        title: vscode.l10n.t('Dismiss'),
       },
     ];
 
@@ -109,21 +109,25 @@ export async function activate(context: vscode.ExtensionContext) {
       'New version of {0} is available. Check out the release notes for version {1}',
       [EXTENSION_DISPLAY_NAME, currentVersion],
     );
-    const option = await vscode.window.showInformationMessage(
-      message,
-      ...actions,
-    );
+    vscode.window.showInformationMessage(message, ...actions).then((option) => {
+      if (!option) {
+        return;
+      }
 
-    // Handle the actions
-    switch (option?.title) {
-      case actions[0].title:
-        vscode.env.openExternal(
-          vscode.Uri.parse(
-            `https://marketplace.visualstudio.com/items/${USER_PUBLISHER}.${EXTENSION_NAME}/changelog`,
-          ),
-        );
-        break;
-    }
+      // Handle the actions
+      switch (option?.title) {
+        case actions[0].title:
+          vscode.env.openExternal(
+            vscode.Uri.parse(
+              `https://marketplace.visualstudio.com/items/${EXTENSION_USER_PUBLISHER}.${EXTENSION_NAME}/changelog`,
+            ),
+          );
+          break;
+
+        default:
+          break;
+      }
+    });
 
     // Update the version in the global state
     context.globalState.update('version', currentVersion);

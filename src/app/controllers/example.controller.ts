@@ -74,6 +74,8 @@ export class ExampleController {
    * @returns {Promise<void>} - The promise with no return value
    */
   async getFilesInFolder(path?: Uri): Promise<void> {
+    const { includedFilePatterns, excludedFilePatterns } = this.config;
+
     // Get the relative path
     const folderPath: string = path ? await getRelativePath(path.path) : '';
 
@@ -97,8 +99,8 @@ export class ExampleController {
 
     // Get the files in the folder
     const files = await directoryMap(folder, {
-      extensions: this.config.include,
-      ignore: this.config.exclude,
+      extensions: includedFilePatterns,
+      ignore: excludedFilePatterns,
       maxResults: 512,
     });
 

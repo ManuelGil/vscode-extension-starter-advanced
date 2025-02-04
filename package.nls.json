@@ -1,7 +1,7 @@
 {
-	"extensionIdentifier.files.include": "Glob patterns to include in the package. The default is ts, js, json, html, css, scss, less",
-	"extensionIdentifier.files.exclude": "Glob patterns to exclude from the package. The default is node_modules, dist, out, build, and any hidden files",
-	"extensionIdentifier.files.showPath": "Show the path of the file in the name of the list of generated files",
+	"extensionIdentifier.files.includedFilePatterns": "Glob patterns to include in the package. The default is ts, js, json, html, css, scss, less",
+	"extensionIdentifier.files.excludedFilePatterns": "Glob patterns to exclude from the package. The default is node_modules, dist, out, build, and any hidden files",
+	"extensionIdentifier.files.includeFilePath": "Show the path of the file in the name of the list of generated files",
 	"extensionIdentifier.openai.apiKey": "OpenAI API Key. Get it from https://platform.openai.com/account/api-keys",
 	"extensionIdentifier.openai.model": "OpenAI Model. The default is gpt-3.5-turbo. Get more information from https://platform.openai.com/docs/models/model-endpoint-compatibility",
 	"extensionIdentifier.helloWorld": "Hello World",

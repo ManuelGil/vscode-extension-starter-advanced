@@ -1,6 +1,7 @@
 import {
   Event,
   EventEmitter,
+  l10n,
   ProviderResult,
   ThemeIcon,
   TreeDataProvider,
@@ -154,27 +155,27 @@ export class FeedbackProvider implements TreeDataProvider<NodeModel> {
    */
   private getFeedbacks(): NodeModel[] {
     return [
-      new NodeModel('About Us', new ThemeIcon('info'), {
+      new NodeModel(l10n.t('About Us'), new ThemeIcon('info'), {
         title: 'About Us',
         command: `${EXTENSION_ID}.feedback.aboutUs`,
       }),
-      new NodeModel('Documentation', new ThemeIcon('book'), {
+      new NodeModel(l10n.t('Documentation'), new ThemeIcon('book'), {
         title: 'Documentation',
         command: `${EXTENSION_ID}.feedback.documentation`,
       }),
-      new NodeModel('Report Issues', new ThemeIcon('bug'), {
+      new NodeModel(l10n.t('Report Issues'), new ThemeIcon('bug'), {
         title: 'Report Issues',
         command: `${EXTENSION_ID}.feedback.reportIssues`,
       }),
-      new NodeModel('Rate Us', new ThemeIcon('star'), {
+      new NodeModel(l10n.t('Rate Us'), new ThemeIcon('star'), {
         title: 'Rate Us',
         command: `${EXTENSION_ID}.feedback.rateUs`,
       }),
-      new NodeModel('Follow Us', new ThemeIcon('twitter'), {
+      new NodeModel(l10n.t('Follow Us'), new ThemeIcon('twitter'), {
         title: 'Follow Us',
         command: `${EXTENSION_ID}.feedback.followUs`,
       }),
-      new NodeModel('Support Us', new ThemeIcon('heart'), {
+      new NodeModel(l10n.t('Support Us'), new ThemeIcon('heart'), {
         title: 'Support Us',
         command: `${EXTENSION_ID}.feedback.supportUs`,
       }),

@@ -59,10 +59,13 @@ export class ListFilesController {
   async getFiles(
     maxResults: number = Number.MAX_SAFE_INTEGER,
   ): Promise<NodeModel[] | void> {
+    const { includedFilePatterns, excludedFilePatterns, includeFilePath } =
+      this.config;
+
     // Get the files in the folder
     const files = await directoryMap('/', {
-      extensions: this.config.include,
-      ignore: this.config.exclude,
+      extensions: includedFilePatterns,
+      ignore: excludedFilePatterns,
       maxResults,
     });
 
@@ -77,7 +80,7 @@ export class ListFilesController {
         const path = await getRelativePath(document.fileName);
         let filename = path.split('/').pop();
 
-        if (filename && this.config.showPath) {
+        if (filename && includeFilePath) {
           const folder = path.split('/').slice(0, -1).join('/');
 
           filename += folder ? ` (${folder})` : ' (root)';

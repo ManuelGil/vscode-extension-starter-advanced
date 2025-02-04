@@ -1,6 +1,10 @@
 import { WorkspaceConfiguration } from 'vscode';
 
-import { EXCLUDE, INCLUDE, SHOW_PATH } from './constants.config';
+import {
+  DEFAULT_EXCLUDE_PATTERNS,
+  IS_INCLUDE_FILE_PATH_DEFAULT,
+  DEFAULT_INCLUDE_PATTERNS,
+} from './constants.config';
 
 /**
  * The Config class.
@@ -33,7 +37,7 @@ export class ExtensionConfig {
    * const config = new Config(workspace.getConfiguration());
    * console.log(config.include);
    */
-  include: string[];
+  includedFilePatterns: string[];
   /**
    * The files to exclude.
    * @type {string[]}
@@ -43,7 +47,7 @@ export class ExtensionConfig {
    * const config = new Config(workspace.getConfiguration());
    * console.log(config.exclude);
    */
-  exclude: string[];
+  excludedFilePatterns: string[];
   /**
    * Whether to show the path or not.
    * @type {boolean}
@@ -53,7 +57,7 @@ export class ExtensionConfig {
    * const config = new Config(workspace.getConfiguration());
    * console.log(config.showPath);
    */
-  showPath: boolean;
+  includeFilePath: boolean;
   /**
    * The OpenAI API key.
    * @type {string}
@@ -81,9 +85,22 @@ export class ExtensionConfig {
    * @memberof Config
    */
   constructor(readonly config: WorkspaceConfiguration) {
-    this.include = config.get<string[]>('files.include', INCLUDE);
-    this.exclude = config.get<string[]>('files.exclude', EXCLUDE);
-    this.showPath = config.get<boolean>('files.showPath', SHOW_PATH);
+    // Extensions to include in the search
+    this.includedFilePatterns = config.get<string[]>(
+      'files.includedFilePatterns',
+      DEFAULT_INCLUDE_PATTERNS,
+    );
+    // Patterns of files and folders to exclude from the search
+    this.excludedFilePatterns = config.get<string[]>(
+      'files.excludedFilePatterns',
+      DEFAULT_EXCLUDE_PATTERNS,
+    );
+    // Whether to show the path or not in the search results
+    this.includeFilePath = config.get<boolean>(
+      'files.includeFilePath',
+      IS_INCLUDE_FILE_PATH_DEFAULT,
+    );
+    // OpenAI API key and model to use
     this.openai = {
       apiKey: config.get<string>('openai.apiKey', ''),
       model: config.get<string>('openai.model', ''),
@@ -107,12 +124,25 @@ export class ExtensionConfig {
    * config.update(workspace.getConfiguration());
    */
   update(config: WorkspaceConfiguration): void {
-    this.include = config.get<string[]>('files.include', INCLUDE);
-    this.exclude = config.get<string[]>('files.exclude', EXCLUDE);
-    this.showPath = config.get<boolean>('files.showPath', SHOW_PATH);
+    // Extensions to include in the search
+    this.includedFilePatterns = config.get<string[]>(
+      'files.includedFilePatterns',
+      this.includedFilePatterns,
+    );
+    // Patterns of files and folders to exclude from the search
+    this.excludedFilePatterns = config.get<string[]>(
+      'files.excludedFilePatterns',
+      this.excludedFilePatterns,
+    );
+    // Whether to show the path or not in the search results
+    this.includeFilePath = config.get<boolean>(
+      'files.includeFilePath',
+      this.includeFilePath,
+    );
+    // OpenAI API key and model to use
     this.openai = {
-      apiKey: config.get<string>('openai.apiKey', ''),
-      model: config.get<string>('openai.model', ''),
+      apiKey: config.get<string>('openai.apiKey', this.openai.apiKey),
+      model: config.get<string>('openai.model', this.openai.model),
     };
   }
 }

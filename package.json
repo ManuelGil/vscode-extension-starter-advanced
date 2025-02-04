@@ -50,7 +50,7 @@
 		"configuration": {
 			"title": "My Extension",
 			"properties": {
-				"extensionIdentifier.files.include": {
+				"extensionIdentifier.files.includedFilePatterns": {
 					"type": "array",
 					"default": [
 						"ts",
@@ -62,9 +62,9 @@
 						"less"
 					],
 					"scope": "resource",
-					"description": "%extensionIdentifier.files.include%"
+					"description": "%extensionIdentifier.files.includedFilePatterns%"
 				},
-				"extensionIdentifier.files.exclude": {
+				"extensionIdentifier.files.excludedFilePatterns": {
 					"type": "array",
 					"default": [
 						"**/node_modules/**",
@@ -74,13 +74,13 @@
 						"**/.*/**"
 					],
 					"scope": "resource",
-					"description": "%extensionIdentifier.files.exclude%"
+					"description": "%extensionIdentifier.files.excludedFilePatterns%"
 				},
-				"extensionIdentifier.files.showPath": {
+				"extensionIdentifier.files.includeFilePath": {
 					"type": "boolean",
 					"default": true,
 					"scope": "resource",
-					"description": "%extensionIdentifier.files.showPath%"
+					"description": "%extensionIdentifier.files.includeFilePath%"
 				},
 				"extensionIdentifier.openai.apiKey": {
 					"type": "string",

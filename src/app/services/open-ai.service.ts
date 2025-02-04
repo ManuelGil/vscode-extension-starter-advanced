@@ -67,12 +67,14 @@ export class OpenAIService {
    * @returns {Promise<ChatCompletion>} - The completion
    */
   async completion(prompt: string): Promise<ChatCompletion> {
+    const { model } = this.config.openai;
+
     return await this.getInstance().chat.completions.create({
       messages: [
         { role: 'system', content: 'You are a helpful assistant.' },
         { role: 'user', content: prompt },
       ],
-      model: this.config.openai.model,
+      model,
     });
   }
 
@@ -89,7 +91,9 @@ export class OpenAIService {
    */
   private getInstance(): OpenAI {
     if (!this.openai) {
-      this.openai = new OpenAI({ apiKey: this.config.openai.apiKey });
+      const { apiKey } = this.config.openai;
+
+      this.openai = new OpenAI({ apiKey });
     }
 
     return this.openai;
