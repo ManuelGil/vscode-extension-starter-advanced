@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.0] - 2025-02-03
+
+### Changed
+
+- Update file patterns in configuration and improve code readability
+
 ## [1.11.0] - 2024-12-22
 
 ### Added
@@ -217,7 +223,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix file creation issue when creating a new file
 
-[unreleased]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.11.0...HEAD
+[unreleased]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.12.0...HEAD
+[1.12.0]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.11.0...v1.12.0
 [1.11.0]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.8.0...v1.9.0
