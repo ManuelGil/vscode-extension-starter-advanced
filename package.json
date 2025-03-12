@@ -341,6 +341,7 @@
 	"dependencies": {
 		"@vscode/codicons": "^0.0.36",
 		"json-to-ts": "^2.1.0",
-		"openai": "^4.77.0"
+		"openai": "^4.77.0",
+		"vscode-marketplace-client": "^1.0.0"
 	}
 }

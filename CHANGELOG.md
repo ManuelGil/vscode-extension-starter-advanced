@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.13.0] - 2025-03-11
+
+### Added
+
+- Add `vscode-marketplace-client` dependency to check for extension updates and display a notification
+
+### Changed
+
+- Update the `extension.ts` file to use the new `vscode-marketplace-client` dependency
+- Update Localization strings for the extension
+
 ## [1.12.0] - 2025-02-03
 
 ### Changed
@@ -223,7 +234,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix file creation issue when creating a new file
 
-[unreleased]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.12.0...HEAD
+[unreleased]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.13.0...HEAD
+[1.13.0]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.12.0...v1.13.0
 [1.12.0]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.11.0...v1.12.0
 [1.11.0]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/ManuelGil/vscode-extension-starter-advanced/compare/v1.9.0...v1.10.0
